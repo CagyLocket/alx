@@ -16,7 +16,7 @@ import random
 
 def multiplication_results():
 
-    for i in range(1, 20):
+    for i in range(1, 5):
         num_1 = random.randint(1, 10)
         num_2 = random.randint(1, 10)
         print(f"Pytanie nr {i}: Ile to jest {num_1} * {num_2}?")
@@ -40,7 +40,6 @@ def multiplication_results():
                     except ValueError:
                         print("Podawaj tylko liczby całkowite.")
 
-        # break
 
 
 multiplication_results()
