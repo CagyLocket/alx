@@ -50,7 +50,7 @@ class Student:
         self.__grades = grades
 
     def __str__(self,):
-        return (f"Imię: {self.first_name} Nazwisko: {self.last_name} Oceny: {self.grades}")
+        return f"Imię: {self.first_name} Nazwisko: {self.last_name} Oceny: {self.grades}"
 
 
 class StudentController:
@@ -59,11 +59,15 @@ class StudentController:
         self.student_list = []
 
     def add_student(self, first_name, last_name):
+        """Adds a student"""
+
         student = Student(first_name, last_name)
         self.student_list.append(student)
         print(f"Student {student.first_name} {student.last_name} został pomyślnie dodany.")
 
     def show_student(self):
+        """Lists students"""
+
         if self.student_list:
             print("Lista studentów: ")
             for i in self.student_list:
@@ -72,6 +76,8 @@ class StudentController:
             print("Brak studentów w dzienniku")
 
     def remove_student(self, last_name):
+        """Removes a student"""
+
         is_found = False
         for i in self.student_list:
             if last_name == i.last_name:
@@ -87,6 +93,8 @@ class StudentController:
             print("Nie znaleziono studenta o podanym nazwisku.")
 
     def modify_student(self, last_name):
+        """Modifies student's properties"""
+
         is_found = False
         for i in self.student_list:
             if last_name == i.last_name:
@@ -113,6 +121,8 @@ class StudentController:
             print("Nie znaleziono studenta o podanym nazwisku.")
 
     def is_student(self, d):
+        """Boolean to check is_student"""
+
         for i in self.student_list:
             if d == i.last_name:
                 return True
@@ -120,6 +130,7 @@ class StudentController:
                 return False
 
     def add_grade(self, last_name):
+        """Ads a grade for a student"""
         is_found = False
         for i in self.student_list:
             if last_name == i.last_name:
@@ -132,6 +143,8 @@ class StudentController:
             print("Nie znaleziono studenta o podanym nazwisku.")
 
     def show_grades(self, last_name):
+        """Lists grades of a student"""
+
         is_found = False
         for i in self.student_list:
             if last_name == i.last_name:
@@ -141,6 +154,8 @@ class StudentController:
             print("Nie znaleziono studenta o podanym nazwisku.")
 
     def find_mean(self):
+        """Calculates a mean value for student's grades"""
+
         my_sum = 0
         for i in self.student_list:
             if len(i.grades) != 0:

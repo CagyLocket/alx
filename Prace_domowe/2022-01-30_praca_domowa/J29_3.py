@@ -306,8 +306,8 @@ class CourseController:
                 is_found = True
 
                 while True:
-                    menu3 = input("Wybierz opcję:\n1-zmień nazwę 2-zmień datę 3-zmień miejscowość "
-                                    "4-wyświetl kurs 5-koniec").upper()
+                    menu3 = input(f"Wybierz opcję:\n1-zmień nazwę 2-zmień datę 3-zmień miejscowość "
+                                    f"4-wyświetl kurs, 5-koniec").upper()
 
                     if menu3 == "1":
                         new_name = input(f"Aktualna nazwa: {i.name} >>> Podaj nową nazwę: ")
