@@ -163,3 +163,16 @@ plik.writelines(dane)
 
 
 plik.close()
+
+
+smak = ["łagodny", "pikantny"]
+
+f = open("dane.dat", "wb")
+pickle.dump(smak, f)
+f.close()
+
+f = open("dane.dat", "rb")
+x1 = pickle.load(f)
+f.close()
+
+# Dark themes: https://blog.karenying.com/posts/50-shades-of-dark-mode-gray
