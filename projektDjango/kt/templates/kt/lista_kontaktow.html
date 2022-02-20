@@ -1,0 +1,31 @@
+{% extends 'kt/index.html' %}
+
+{% block content %}
+
+<h3>Lista kontaktów</h3>
+
+    {% for i in dane %}
+    <div>
+        <p>
+            <b>Imię: {{ i.imie }}</b>
+        </p>
+        <p>
+            <b>Nazwisko: {{ i.nazwisko }}</b>
+        </p>
+        <p>
+            <b>Telefon: {{ i.telefon }}</b>
+        </p>
+        <p>
+            <b>Email: {{ i.email }}</b>
+        </p>
+        <p>
+            <a href="{% url 'edytuj_kontakt' pk=i.pk %}">Edytuj</a>
+            <a href="{% url 'usun_kontakt' pk=i.pk %}">Usuń</a>
+        </p>
+    </div>
+    <hr/>
+
+
+    {% endfor %}
+
+{% endblock %}

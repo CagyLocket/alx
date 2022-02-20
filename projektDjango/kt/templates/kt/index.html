@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Książka telefoniczna</h3>
+
+<h4>Menu:</h4>
+<a href="{% url 'lista_kontaktow' %}">Strona główna</a>
+<a href="{% url 'dodaj_kontakt' %}">Dodaj nowy adres</a>
+
+
+{% block content %}
+{% endblock %}
+
+
+
+<footer>
+    <p>
+        Copyright &copy; ALX 2022
+    </p>
+</footer>
+
+</body>
+</html>
