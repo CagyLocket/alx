@@ -1,17 +1,23 @@
+{% extends 'library/base.html' %}
 
+{% block title %} {{title}} {% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
+{% block content %}
 
 <h1>{{ title }}</h1>
+<p>Strona otworzona o {{ time }} za pomocą {{ browser }}</p>
 
-<!--komentarz na poziomie szablonu to: {# #}-->
-{#{% print dump %}#}
+{% if books %}
+    <h2>Posiadamy następujące ksiązki:</h2>
+    <ul>
+    {% for book in books %}
+    <li><a href="{% url 'book' book.id %}">Książka {{ book.title }}</a></li>
+    {% endfor %}
+    </ul>
 
-</body>
-</html>
+{% else %}
+    <p>Brak książek</p>
+
+{% endif %}
+
+{% endblock %}
