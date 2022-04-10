@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>{{book.title}}</h1>
-<li><a href="{% url 'author'  book.author.id %}">by {{book.author }}</a></li>
+<li><a href="{% url 'author'  book.author.id %}">by {{ book.author }}</a></li>
 <p>{{book.description}}</p>
 
 {% endblock %}

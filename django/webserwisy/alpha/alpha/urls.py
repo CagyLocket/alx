@@ -20,6 +20,7 @@ import library.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', library.views.home, name="home"),
+    path('books/add', library.views.add_book, name="add_book"),
     path('books/<int:book_id>', library.views.book, name="book"),
     path('authors/<int:author_id>', library.views.author, name="author"),
 
