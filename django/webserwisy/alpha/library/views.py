@@ -3,9 +3,10 @@ import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 
 from .models import Book, Author
-from .forms import AddBookForm
+from .forms import AddBookForm, BookForm_ModelForm, DeleteBookForm
 
 
 def home(request):
@@ -24,8 +25,17 @@ def home(request):
 
 def book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
+    if request.method == "POST":
+        form = DeleteBookForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data["operation"] == 'delete':
+                book.delete()
+                messages.success(request, "Usunięto książkę")
+                return HttpResponseRedirect(reverse("home"))
+    delete_form = DeleteBookForm()
     context = {
         'book': book,
+        'delete_form': delete_form,
     }
     return render(request, 'library/book.html', context)
 
@@ -53,7 +63,9 @@ def add_book(request):
                 description=form.cleaned_data['description']
             )
             book.save()
-            return HttpResponseRedirect(reverse('book', args=(book.id,)))
+            # messages.add_message(request, messages.success, "Dodano książkę!")
+            messages.success(request, "Dodano książkę!") # from django.contrib import messages
+            return HttpResponseRedirect(book.get_absolute_url())
 
     else:
         form = AddBookForm()
@@ -62,4 +74,22 @@ def add_book(request):
         'form': form,
     }
 
+    return render(request, 'library/add_book.html', context)
+
+
+def add_book_modelform(request):
+    if request.method == "POST":
+        form = BookForm_ModelForm(request.POST)
+        if form.is_valid():
+            book = form.save()
+            messages.success(request, "Dodano książkę!")
+            # return HttpResponseRedirect(reverse('book', args=(book.id,)))
+            return HttpResponseRedirect(book.get_absolute_url())
+
+    else:
+        form = BookForm_ModelForm()
+
+    context = {
+        'form': form,
+    }
     return render(request, 'library/add_book.html', context)

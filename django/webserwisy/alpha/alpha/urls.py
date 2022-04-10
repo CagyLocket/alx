@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', library.views.home, name="home"),
     path('books/add', library.views.add_book, name="add_book"),
+    path('books/add_modelform', library.views.add_book_modelform, name="add_book_modelform"),
     path('books/<int:book_id>', library.views.book, name="book"),
     path('authors/<int:author_id>', library.views.author, name="author"),
 
