@@ -17,6 +17,9 @@ class Movie(models.Model):
     def __str__(self):
         return self.title
 
+    def cinemas_that_play_it(self):
+        return self.projection_set.all()
+
 
 class Projection(models.Model):
     cinema = models.ForeignKey(Cinema, on_delete=models.CASCADE)
